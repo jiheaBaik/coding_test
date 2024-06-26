@@ -11,7 +11,7 @@ public class Main {
         Stack<Character> stack = new Stack<>();
         Stack<Integer> sumStack = new Stack<>();
 
-        boolean flag = true;
+        boolean isValid = true;
         int result = 0;
 
         for (int i = 0; i < input.length(); i++) {
@@ -22,7 +22,7 @@ public class Main {
                 sumStack.push(0); // 초기값으로 0을 푸시
             } else {
                 if (stack.isEmpty()) {
-                    flag = false;
+                    isValid = false;
                     break;
                 }
 
@@ -30,25 +30,25 @@ public class Main {
                 int innerSum = sumStack.pop();
 
                 if ((c == ')' && openBracket != '(') || (c == ']' && openBracket != '[')) {
-                    flag = false;
+                    isValid = false;
                     break;
                 }
 
                 int value = (c == ')') ? 2 : 3;
                 int calculatedValue = value * (innerSum != 0 ? innerSum : 1);
 
-                if (!sumStack.isEmpty()) {
+                if (!sumStack.isEmpty())
                     sumStack.push(sumStack.pop() + calculatedValue);
-                } else {
+                else
                     result += calculatedValue;
-                }
+
             }
         }
 
-        if (!flag || !stack.isEmpty()) {
+        if (!isValid || !stack.isEmpty())
             System.out.println(0);
-        } else {
+        else
             System.out.println(result);
-        }
+
     }
 }
