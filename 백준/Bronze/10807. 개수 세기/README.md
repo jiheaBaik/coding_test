@@ -26,3 +26,30 @@
 
  <p>첫째 줄에 입력으로 주어진 N개의 정수 중에 v가 몇 개인지 출력한다.</p>
 
+---
+
+## 참고
+### StringTokenizer란
+- 자바에서 문자열을 특정 구분자(delimiter)를 기준으로 분리할 때 사용하는 클래스
+    - 구분자를 기준으로 문자열을 토큰(token)으로 나누는 기능을 제공
+- `java.util` 패키지에 포함되어 있음
+- `StringTokenizer`는 기본적으로 공백 문자(스페이스, 탭, 줄바꿈 등)를 구분자로 사용하지만, 사용자 정의 구분자를 사용할 수도 있음
+
+### nextToken()란
+- `StringTokenizer` 객체에서 다음 토큰을 반환하는 메소드
+- 다음 토큰을 반환하며, 토큰이 더 이상 없을 경우 `NoSuchElementException` 예외를 던질 수 있음
+```java
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) {
+        String inputString = "1 4 1 2 4 2 4 2 3 4 4";
+        StringTokenizer tokenizer = new StringTokenizer(inputString);
+
+        while (tokenizer.hasMoreTokens()) {
+            String token = tokenizer.nextToken();
+            System.out.println(token);
+        }
+    }
+}
+```
